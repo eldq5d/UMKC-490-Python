@@ -8,7 +8,15 @@ heightInp = int(input("Enter the height of your board: "))
 widthInp = int(input("Enter the width of your board: "))
 x = 1
 while x <= heightInp:
-    print("---  " * widthInp)
-    print("|   " * (widthInp + 1))
-    x += 1
-print ("---  " * widthInp)
+    if widthInp > 6:
+        print("---  " * (widthInp - 1))
+        print("|   " * (widthInp + 1))
+        x += 1
+    else:
+        print("---  " * widthInp)
+        print("|   " * (widthInp + 1))
+        x += 1
+if widthInp > 6:
+    print ("---  " * (widthInp-1))
+else:
+    print ("---  " * widthInp)

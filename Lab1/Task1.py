@@ -19,6 +19,6 @@ while line != "":
     line = infile.readline()
 for w in listOfWords:
     freqOfWords.append(listOfWords.count(w))
-newList = list(zip(listOfWords,freqOfWords))
+newList = list(zip(listOfWords, freqOfWords))
 finalList = set(newList)
 print(finalList)
