@@ -22,3 +22,4 @@ for w in listOfWords:
 newList = list(zip(listOfWords, freqOfWords))
 finalList = set(newList)
 print(finalList)
+print(newList)
