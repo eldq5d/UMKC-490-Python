@@ -1,84 +1,79 @@
-# Write a python program to create the following management system.
-# 1. Airline Booking Reservation System (classes for Flight,Person,Employee,Passenger etc.)
-#
-# Prerequisites:
-# Your code should have at least five classes.
-# Your code should have _init_ constructor in all the classes
-# Your code should show inheritance at least once
-# Your code should have one super call
-# Use of self is required
-# Use at least one private data member in your code
-# Use multiple Inheritance at least once
-# Create instances of all classes and show the relationship between them
-# Your submission code should point out where all these things are present
+# Write a python program to create and airline booking reservation system.
 
 
 class Person:
     """A class representing a person"""
 
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+    lastname = ''
+    firstname = ''
+
+    def __init__(self, firstname, lastname):
+        Person.firstname = firstname
+        Person.lastname = lastname
 
     def get_info(self):
-        return self.name, self.age
+        return self.firstname, self.lastname
 
 
+# inheritance
 class Passenger(Person):
     """A subclass of person, representing passengers"""
-
-    def __init__(self, boardingNumber, __SSN, age, name):
-        Person.__init__(self, age, name)
+    # __SSN represents a private data class
+    def __init__(self, firstname, lastname, boardingNumber, __SSN):
+        Person.__init__(self, firstname, lastname)
         self.boardingNumber = boardingNumber
         self.__SSN = __SSN
 
     def get_passenger(self):
-        return self.name, self.age, self.boardingNumber, self.__SSN
+        return Person.firstname, Person.lastname, self.boardingNumber, self.__SSN
 
 
 class Employee(Person):
     """A subclass of person, representing employees"""
 
-    def __init__(self, name, age, employeeNumber):
-        Person.__init__(self, name, age)
+    def __init__(self, firstname, lastname, employeeNumber):
+        Person.__init__(self, firstname, lastname)
         self.empNum = employeeNumber
 
     def get_employee(self):
-        return self.name, self.age, self.empNum
+        return Person.firstname, Person.lastname, self.empNum
 
 
 class Flight:
     """A class representing flights"""
 
+    airline = ''
+    fltNumber = ''
+    status = ''
+
     def __init__(self, fltNumber, airline, status):
-        self.fltNumber = fltNumber
-        self.airline = airline
-        self.status = status
+        Flight.fltNumber = fltNumber
+        Flight.airline = airline
+        Flight.status = status
 
     def get_airline(self):
         return self.fltNumber, self.airline, self.status
 
 
+# multiple inheritance demonstrated here
 class Baggage(Person, Flight):
-    """A sub-class of passenger, representing passenger baggage on flight"""
+    """A sub-class of passenger, representing person baggage on flight"""
 
-    def __init__(self, name, age, fltNumber, airline, status, numberOfBags, itemNumber):
-        Person.__init__(self, name, age)
+    def __init__(self, firstname, lastname, fltNumber, airline, status, numberOfBags, itemNumber):
+        Person.__init__(self, firstname, lastname)
         Flight.__init__(self, fltNumber, airline, status)
         self.numberOfBags = numberOfBags
         self.itemNumber = itemNumber
 
     def get_baggage(self):
-        return self.name, self.age, self.fltNumber, self.airline, self.status, self.numberOfBags, self.itemNumber
+        return (Person.firstname, Person.lastname, Flight.fltNumber, Flight.airline,
+                Flight.status, self.numberOfBags, self.itemNumber)
 
-a = Person("Emma", 25)
-b = Passenger("Emma", 25, "C12", "123-45-6789")
-c = Employee("Jeanie", 51, "07132")
-d = Flight("AA9172", "American", "Delayed")
-e = Baggage("Emma", 25, "C12", "American", "On-time", 1, "0024")
+a = Person(Person.firstname, Person.lastname)
+b = Passenger(Person.firstname, Person.lastname, "C12", "123-45-6789")
+c = Employee(Person.firstname, Person.lastname, "07132")
+d = Flight(Flight.fltNumber, Flight.airline, Flight.status)
+e = Baggage("Emma", "Davis", "AA9172", "American Airlines", "Delayed", 1, "0024")
 
 print(a.get_info())
-print(b.get_passenger())
-print(c.get_employee())
-print(d.get_airline())
 print(e.get_baggage())
