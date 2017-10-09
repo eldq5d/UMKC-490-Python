@@ -1,0 +1,14 @@
+In our last lab, we demonstrated how to utilize our basic logic gates to create full adders, and thus were able to sum binary numbers together using a circuit.
+For this lab we are provided with an integrated circuit chip that actually performs all the adding and carrying involved in a full-adder circuit within the chip.
+Previously, we were performing only addition with the adder circuit, but we are now asked to perform subtraction with the same circuit.
+How does one accomplish that?
+This is where our knowledge on subtracting binary numbers comes into play.
+We have learned that in order to perform subtraction on binary numbers, the standard procedure is to convert the subtrahend to its 2s-complement form.
+We then perform addition as you would on any two binary numbers.
+As an example, if you have A - B, you would first convert B to its 2s-complement form by inverting it and adding 1.
+Then you would perform addition in the form of A + (-B).
+Once the addition has been completed you have one of two scenarios: the output number is positive, producing an end carry, which you drop.
+Or the output number is negative, so you perform 2s-complement on it and append a negative sign.
+Testing sentence.
+This one has no key words.
+One last sentence with the common words in it.
